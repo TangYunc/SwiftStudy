@@ -10,6 +10,7 @@ import UIKit
 
 /**
  从Xcode8.0开始，所有插件都不能使用
+ "//MARK:"    "FIXME:"    "TODO:"
  */
 
 class ViewController: UIViewController {
