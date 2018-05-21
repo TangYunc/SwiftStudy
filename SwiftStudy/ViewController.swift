@@ -23,69 +23,53 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        demo2()
-        
-        //关于let和var 的选择
-        //不可变的会更安全，在开发的时候先使用let，在需要变化的时候，再改为var
-        //Variable 'x' was never mutated; consider changing to 'let' constant
-        //变量x没有执行，建议改为let
-        var x = 10
-        let y = 5
-        print(x + y)
-        
-        
-        
-        //修改视图属性
-        let v = UIView()
-        //这里仅修改的是v的属性，并未修改v的指针地址
-        v.backgroundColor = UIColor.red;
-        
+    demo1()
     }
-
-    func demo2() {
-        //如果需要指定变量/常量的类型。也可以直接使用let x: 类型 = 值
-        //提示:在 swift开发中，极少使用直接指定类型，通常都是自动推导
-        let x: Double = 100
-        let y = 10.5
-//        let z = "abc"
-        
-        print(x + y)
-    }
-    
-    ///1.热键:option + click
-    //2.定义变量： var，定义之后可以修改
-    //定义常量： let，定义之后不能修改
-    //3.自动推导,变量/常量的类型会根据右侧的代码执行结果，推导对应的类型
-    //4.在swift中对类型要求异常严格
-    //任何不同的类型数据，不允许直接运算
-    //不会做默认隐式转换，所有的类型确定，由程序员负责
-    //swift中，不存在基本数据类型。都是结构体
     
     func demo1() {
-        let x = 10
-        let y = 10.5
-        //1.将y转换成整数
-        //OC 中的写法：(Int)y,类型强转
-        //swift中Int()‘结构体’的构造函数
-        print(x + Int(y))
-        //2.将x转换成Double
-        print(Double(x) + y)
+        //1.定义y没有初始化
+        let y: Int?
+        //2.给常量初始数值，只做一次
+        y = 10
+        //再次修改常量会报错
+//        y = 3
+        print(y)
         
+        //var的可选值默认为nil
+        //let可选值没有默认值
+        var x: Int?
+        x = 10
+        x = 100
+        print(x)
     }
     
+//最常见的错误：
+     //Unexpectedly found nil while unwrapping
+    //再解包时发现了nil值
+/**
+     定义 可选项时使用‘？’
+     解包使用‘！’，运算时候使用
+     */
+
     func demo() {
+    //1.原始的可选项定义
+        //none没有值   some(Wrapped)
+        let x: Optional = 10
         
-        var x = 10
-        x = 20
-        
-        let y = 10.5
-        
-        let v = UIView()
-        
+        //2.简单的定义
+        //‘？’用来定义y是一个可选的Int类型，可能没有值，也可能是一个整数
+//        let y: Int?
+        //Constant 'y' used before being initialized
+        //常量y使用前必须初始化
+        let y: Int? = 40//= nil
+        //输出结果Optional(10)，提示这是一个可选值
         print(x)
         print(y)
+        
+        //不同类型之间的值不能直接运算！如果没有值是 nil 不是任何数据类型，不能参与计算
+        //print(x + y)
+        //'!'强行解包，从可选值中强行获取对应的非空值，如果真的是nil就会奔溃，因此程序员必须对每一个‘！’负责，程序中要少用‘！’
+        print(x! + y!)
     }
-
-
 }
 
