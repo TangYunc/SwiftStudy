@@ -9,43 +9,81 @@
 import UIKit
 
 /**
- 从Xcode8.0开始，所有插件都不能使用
- "//MARK:"    "FIXME:"    "TODO:"
+ swift官方网站:https://swift.org
+ 官方博客：https://developer.apple.com/swift/blog
+ 苹果官方swift2.0电子书：https://itunes.apple.com/us/book
+ 2.0中文版：http://wiki.jikexueyuan.com/project/swift/
+ 4.0:https://www.cnswift.org/
+ 100个swift学习tip，作者王巍，http://onecat.com
  */
 
 class ViewController: UIViewController {
 
-    //MARK:--视图生命周期
-    //MARK:视图加载完成
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //MARK:Xcode提供了官方的图片辅助功能Image Literal， 不需要安装第三方插件。 PS：Apple很任性， 很多三方插件都禁用了。
-        let v = UIView(frame:CGRect(x: 0, y: 20, width: 100, height: 100));
-        v.backgroundColor = UIColor.red;//Xcode8.0特有TODO:应该重置新的颜色
-         //ColorLiteral也是Xcode提供的小功能，用法跟ImageLiteral相同。 还可以点击Other按钮，有更多的便捷选色界面。
-        v.backgroundColor = #colorLiteral(red: 0, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
-        self.view.addSubview(v)
+        demo2()
         
-        //MARK:Image Literal的功能；
+        //关于let和var 的选择
+        //不可变的会更安全，在开发的时候先使用let，在需要变化的时候，再改为var
+        //Variable 'x' was never mutated; consider changing to 'let' constant
+        //变量x没有执行，建议改为let
+        var x = 10
+        let y = 5
+        print(x + y)
         
-        //1.输入Image会有智能提示， 选中Image Literal并回车。
-        //2.选中ImageLiteral后会显示一个小图标， 双击这个小图标会罗列出Resources目录里的所有图片， 选中你想要的图片就可以了。
-        let im = UIImageView (image: #imageLiteral(resourceName: "头像"))
-        im.frame = CGRect (x: 100, y: 200, width: 300, height: 400)
         
-        let iv = UIImageView(image: #imageLiteral(resourceName: "背景"))//Xcode8.0特有FIXME:应该更改新的背景
         
-        iv.center = view.center
-        view.addSubview(iv)
-        view.addSubview(im)
+        //修改视图属性
+        let v = UIView()
+        //这里仅修改的是v的属性，并未修改v的指针地址
+        v.backgroundColor = UIColor.red;
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func demo2() {
+        //如果需要指定变量/常量的类型。也可以直接使用let x: 类型 = 值
+        //提示:在 swift开发中，极少使用直接指定类型，通常都是自动推导
+        let x: Double = 100
+        let y = 10.5
+//        let z = "abc"
+        
+        print(x + y)
+    }
+    
+    ///1.热键:option + click
+    //2.定义变量： var，定义之后可以修改
+    //定义常量： let，定义之后不能修改
+    //3.自动推导,变量/常量的类型会根据右侧的代码执行结果，推导对应的类型
+    //4.在swift中对类型要求异常严格
+    //任何不同的类型数据，不允许直接运算
+    //不会做默认隐式转换，所有的类型确定，由程序员负责
+    //swift中，不存在基本数据类型。都是结构体
+    
+    func demo1() {
+        let x = 10
+        let y = 10.5
+        //1.将y转换成整数
+        //OC 中的写法：(Int)y,类型强转
+        //swift中Int()‘结构体’的构造函数
+        print(x + Int(y))
+        //2.将x转换成Double
+        print(Double(x) + y)
+        
+    }
+    
+    func demo() {
+        
+        var x = 10
+        x = 20
+        
+        let y = 10.5
+        
+        let v = UIView()
+        
+        print(x)
+        print(y)
     }
 
 
