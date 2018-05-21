@@ -7,28 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2DF640DD20B2746A00D69794 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF640DC20B2746A00D69794 /* main.swift */; };
+		2DF6410E20B28DB100D69794 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF6410D20B28DB100D69794 /* AppDelegate.swift */; };
+		2DF6411020B28DB100D69794 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF6410F20B28DB100D69794 /* ViewController.swift */; };
+		2DF6411320B28DB100D69794 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DF6411120B28DB100D69794 /* Main.storyboard */; };
+		2DF6411520B28DB100D69794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF6411420B28DB100D69794 /* Assets.xcassets */; };
+		2DF6411820B28DB100D69794 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DF6411620B28DB100D69794 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		2DF640D720B2746A00D69794 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		2DF640D920B2746A00D69794 /* SwiftStudy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftStudy; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DF640DC20B2746A00D69794 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2DF6410A20B28DB100D69794 /* SwiftStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DF6410D20B28DB100D69794 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2DF6410F20B28DB100D69794 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2DF6411220B28DB100D69794 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2DF6411420B28DB100D69794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2DF6411720B28DB100D69794 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2DF6411920B28DB100D69794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2DF640D620B2746A00D69794 /* Frameworks */ = {
+		2DF6410720B28DB100D69794 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,26 +35,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2DF640D020B2746A00D69794 = {
+		2DF6410120B28DB100D69794 = {
 			isa = PBXGroup;
 			children = (
-				2DF640DB20B2746A00D69794 /* SwiftStudy */,
-				2DF640DA20B2746A00D69794 /* Products */,
+				2DF6410C20B28DB100D69794 /* SwiftStudy */,
+				2DF6410B20B28DB100D69794 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		2DF640DA20B2746A00D69794 /* Products */ = {
+		2DF6410B20B28DB100D69794 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2DF640D920B2746A00D69794 /* SwiftStudy */,
+				2DF6410A20B28DB100D69794 /* SwiftStudy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2DF640DB20B2746A00D69794 /* SwiftStudy */ = {
+		2DF6410C20B28DB100D69794 /* SwiftStudy */ = {
 			isa = PBXGroup;
 			children = (
-				2DF640DC20B2746A00D69794 /* main.swift */,
+				2DF6410D20B28DB100D69794 /* AppDelegate.swift */,
+				2DF6410F20B28DB100D69794 /* ViewController.swift */,
+				2DF6411120B28DB100D69794 /* Main.storyboard */,
+				2DF6411420B28DB100D69794 /* Assets.xcassets */,
+				2DF6411620B28DB100D69794 /* LaunchScreen.storyboard */,
+				2DF6411920B28DB100D69794 /* Info.plist */,
 			);
 			path = SwiftStudy;
 			sourceTree = "<group>";
@@ -65,13 +67,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2DF640D820B2746A00D69794 /* SwiftStudy */ = {
+		2DF6410920B28DB100D69794 /* SwiftStudy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2DF640E020B2746A00D69794 /* Build configuration list for PBXNativeTarget "SwiftStudy" */;
+			buildConfigurationList = 2DF6411C20B28DB100D69794 /* Build configuration list for PBXNativeTarget "SwiftStudy" */;
 			buildPhases = (
-				2DF640D520B2746A00D69794 /* Sources */,
-				2DF640D620B2746A00D69794 /* Frameworks */,
-				2DF640D720B2746A00D69794 /* CopyFiles */,
+				2DF6410620B28DB100D69794 /* Sources */,
+				2DF6410720B28DB100D69794 /* Frameworks */,
+				2DF6410820B28DB100D69794 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -79,55 +81,89 @@
 			);
 			name = SwiftStudy;
 			productName = SwiftStudy;
-			productReference = 2DF640D920B2746A00D69794 /* SwiftStudy */;
-			productType = "com.apple.product-type.tool";
+			productReference = 2DF6410A20B28DB100D69794 /* SwiftStudy.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2DF640D120B2746A00D69794 /* Project object */ = {
+		2DF6410220B28DB100D69794 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "中发";
 				TargetAttributes = {
-					2DF640D820B2746A00D69794 = {
+					2DF6410920B28DB100D69794 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 2DF640D420B2746A00D69794 /* Build configuration list for PBXProject "SwiftStudy" */;
+			buildConfigurationList = 2DF6410520B28DB100D69794 /* Build configuration list for PBXProject "SwiftStudy" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = 2DF640D020B2746A00D69794;
-			productRefGroup = 2DF640DA20B2746A00D69794 /* Products */;
+			mainGroup = 2DF6410120B28DB100D69794;
+			productRefGroup = 2DF6410B20B28DB100D69794 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2DF640D820B2746A00D69794 /* SwiftStudy */,
+				2DF6410920B28DB100D69794 /* SwiftStudy */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		2DF6410820B28DB100D69794 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DF6411820B28DB100D69794 /* LaunchScreen.storyboard in Resources */,
+				2DF6411520B28DB100D69794 /* Assets.xcassets in Resources */,
+				2DF6411320B28DB100D69794 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		2DF640D520B2746A00D69794 /* Sources */ = {
+		2DF6410620B28DB100D69794 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DF640DD20B2746A00D69794 /* main.swift in Sources */,
+				2DF6411020B28DB100D69794 /* ViewController.swift in Sources */,
+				2DF6410E20B28DB100D69794 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		2DF6411120B28DB100D69794 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DF6411220B28DB100D69794 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2DF6411620B28DB100D69794 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DF6411720B28DB100D69794 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		2DF640DE20B2746A00D69794 /* Debug */ = {
+		2DF6411A20B28DB100D69794 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -156,7 +192,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -175,16 +211,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		2DF640DF20B2746A00D69794 /* Release */ = {
+		2DF6411B20B28DB100D69794 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -213,7 +249,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -226,55 +262,66 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		2DF640E120B2746A00D69794 /* Debug */ = {
+		2DF6411D20B28DB100D69794 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 832LY843KW;
+				INFOPLIST_FILE = SwiftStudy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cecbb.SwiftStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		2DF640E220B2746A00D69794 /* Release */ = {
+		2DF6411E20B28DB100D69794 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 832LY843KW;
+				INFOPLIST_FILE = SwiftStudy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cecbb.SwiftStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2DF640D420B2746A00D69794 /* Build configuration list for PBXProject "SwiftStudy" */ = {
+		2DF6410520B28DB100D69794 /* Build configuration list for PBXProject "SwiftStudy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2DF640DE20B2746A00D69794 /* Debug */,
-				2DF640DF20B2746A00D69794 /* Release */,
+				2DF6411A20B28DB100D69794 /* Debug */,
+				2DF6411B20B28DB100D69794 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2DF640E020B2746A00D69794 /* Build configuration list for PBXNativeTarget "SwiftStudy" */ = {
+		2DF6411C20B28DB100D69794 /* Build configuration list for PBXNativeTarget "SwiftStudy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2DF640E120B2746A00D69794 /* Debug */,
-				2DF640E220B2746A00D69794 /* Release */,
+				2DF6411D20B28DB100D69794 /* Debug */,
+				2DF6411E20B28DB100D69794 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 2DF640D120B2746A00D69794 /* Project object */;
+	rootObject = 2DF6410220B28DB100D69794 /* Project object */;
 }
