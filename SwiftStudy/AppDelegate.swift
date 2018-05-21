@@ -8,6 +8,14 @@
 
 import UIKit
 
+/**
+ swift2010,历经一年开发，2014年春发布第一版，15年春发布两个版本，1.2和2.0beta版，15年底发布2.0，16年发布3.0版本。
+ 其中更安全表现在禁止预编译指令（宏），没有指针，以Struct为主，只有四大类。
+ */
+//1.UIApplicationMain程序等入口
+//2.只有.swift文件，在 swift中默认全局共享
+//3.所有代码都包装在{},默认方法都有缩进
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
