@@ -22,88 +22,133 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        demo()
         demo4()
     }
-    //MARK:--字符串的子串
+    //MARK:--数组的合并
     func demo4() -> () {
-        //建议：一般使用NSString作为中转，因为Swift取子串的方法一直在变
-        let str = "让我们一起去飞"
-        //1.NSString
-        let ocStr = str as NSString
-        let s = ocStr.substring(with: NSMakeRange(2, 3))
-        print(s)
+        //[String]
+        var arr = ["adsaf","dagq","bqerqrh"]
+//        var arr: [NSObject] = ["adsaf","dagq","bqerqrh"]
+        let arr1 = ["师大会分开"]
+//        let arr1 = ["师大会分开",100]
+        //将arr1的内容合并到arr中去
+        //注意：要合并两个数组，其内容的类型必须一致
+        arr += arr1
+        print(arr)
         
-        print(str.startIndex)
-        print(str.endIndex)
-        //String的3.0的方法
-        //startIndex position = 0
-        //endIndex position = str.length
-        let s1 = str.substring(from: "我们".startIndex)
-        let s2 = str.substring(from: "abc".startIndex)
-        print(s1)
-        print(s2)
-        //取自字符串的范围
-        guard let range = str.range(of: "一起") else {
-            print("没有找到字符串")
-            return
-        }
-        //一定找到的范围
-        print("---------")
-        print(range)
-        print(str.substring(with: range))
     }
-    
-    
-    
-    //MARK:--格式化
+    //MARK:--数组的容量
     func demo3() -> () {
-        let h = 8
-        let m = 9
-        let s = 20
-        let dataStr = "\(h):\(m):\(s)"
-        print(dataStr)
-        //使用格式字符串格式化
-        let dataStr1 = String (format: "%02d:%02d:%02d", h,m,s)
-        print(dataStr1)
-    }
-    
-    
-    //MARK:字符串拼接
-    func demo2() {
-        let name = "老王"
-        let age = 18
-        let title: String? = "Boss"
-        let point = CGPoint(x: 100, y: 200)
-        let str = "\(name) \(age) \(point) \(title ?? "")"
-        print(str)
-    }
-    //MARK:字符串长度
-    func demo1() {
-        let str = "abadcd"
-        //返回指定编码的对应字节的数量
-        //utf8的字节（0～4）个，汉子的字节数是3个
-        print(str.lengthOfBytes(using: .utf8))
-        //字符串长度，返回字符串个数(推荐使用)
-        print(str.count)
-        print(str.characters.count)
-        //使用NSString中转
-        /**
-         str as NSString
-         OC 的写法（CustomTabelCell *）[tableView dequeue...]
-         Swift中可以使用  值 as 类型。来进行类型转换
-         */
-        let ocString = str as NSString
-        print(ocString.length)
         
-    }
-    //MARK:字符串遍历
-    func demo() {
-        //NSString不支持以下遍历
-        let str = "我要飞得更高"
-        for c in str.characters {
-            print(c)
+        //OC 中，如果初始化容量，可以避免重复分配空间，效率会高一点
+        
+        //定一个数组，存放的是Int类型的数组，但是没有初始化
+//        var arr: [Int]
+//        //给数组进行初始化
+//        arr = [Int]()
+//        print(arr)
+        //以上两句代码合成一句
+        var arr = [Int]()
+        print("初始化容量\(arr.capacity)")
+        for i in 0..<8 {
+            arr.append(i)
+            print("\(arr) 容量\(arr.capacity)")
         }
+    }
+    
+    
+    //MARK:--数组的增。删。改
+    func demo2() -> () {
+        //OC中数组分为可变NSMutableArray（var） 和不可变NSArray（let）
+        var arr = ["adsaf","dagq","bqerqrh"]
+        arr.append("oeowow")
+        print(arr)
+        
+        //修改,通过下标定位
+        arr[0] = "qqqq"
+        print(arr)
+        
+        //删除
+        //数组越界Index out of range
+//        arr[5] = "XXXX"
+//        print(arr)
+        arr.remove(at: 3)
+        print(arr)
+        //删除全部，并且保留空间
+        arr.reserveCapacity(4)
+        print("\(arr) \(arr.capacity)")
+    }
+    
+    
+    //MARK:--数组的遍历
+    func demo1() -> () {
+        let arr = ["adsaf","dagq","bqerqrh"]
+        //1.按照下标遍历
+        print("----按照下标遍历")
+        for i in 0..<arr.count {
+            print(arr[i])
+        }
+        //2.for in 遍历元素
+        print("----遍历元素")
+        for s in arr {
+            print(s)
+        }
+        //3.enum block遍历，同时遍历下标和内容
+        print("----遍历下标和内容")
+        for e in arr.enumerated() {
+            print("\(e.offset) \(e.element)")
+        }
+        //4.遍历下标和内容2
+        print("----遍历下标和内容2")
+        /**
+         n是索引下标
+         s是[String]数组 n 对应的String元素
+         */
+        for (n,s) in arr.enumerated() {
+            print("\(n)  \(s)")
+        }
+        //5.反序遍历
+        print("----反序遍历")
+        for s in arr.reversed() {
+            print(s)
+        }
+        
+        //6.反序遍历索引&内容
+        print("----错误的反序遍历")
+        //错误的反序遍历，内容和索引不一致
+        for (n,s) in arr.reversed().enumerated() {
+            print("\(n)  \(s)")
+        }
+        print("----正确的反序遍历")
+        //先枚举，再反序
+        for (n,s) in arr.enumerated().reversed() {
+            print("\(n)  \(s)")
+        }
+    }
+    
+    
+    //MARK:--数组的定义
+    func demo() -> () {
+        
+        //OC使用[]定义数组，Swift一样，但是没有‘@’
+        //自动推导结果[String],表示数组中存放的都是 String
+        //跟OC中的数组指定泛型类似
+        let arr = ["adsaf","dagq","bqerqrh"]
+        print(arr)
+        //Swift中基本数据不需要包装
+        let arr1 = [1,2,3,4,5]
+        print(arr1)
+        //CG结构体
+        let point = CGPoint(x: 3, y: 5)
+        let arr2 = [point]
+        print(arr2)
+        //混合结构体，开发中基本不用，因为数组是靠下标索引
+        //如果数组中的类型不一致，自动推导的结果[NSObject]
+        //在Swift中还有一种类型，[AnyObject]->任意对象
+        //在Swift中一个类可以没有父类
+        //****在混合的数组中，CG结构需要包装
+        let arr3 = ["adasf",4,NSValue(cgPoint: point)] as [Any]
+        print(arr3)
     }
 }
 
