@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         //guard let & if let的技巧
         //使用同名变量接受值，在后续使用的都是非空值，不需要解包
         guard let name = name,let age = age else {
-            print("姓名或者年龄为nil")
+            print("姓名或者年龄其中一个为nil")
             return
         }
         print(name + String(age))
