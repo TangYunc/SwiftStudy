@@ -17,67 +17,33 @@ import UIKit
  100个swift学习tip，作者王巍，http://onecat.com
  */
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-     demo3()
+     setUpUI()
     }
-    //MARK:
-    //4.合并
-    func demo3() -> () {
-        var dict = ["name": "大西瓜", "age": "12", "title": "大哥"]
-        let dict1 = ["name":"张","age":"12"]
-        //思路：遍历dict1，依次设值
-        //如果KEY不存在，会新增
-        //如果KEY存在，会修改
-        for e in dict1 {
-            dict[e.key] = dict1[e.key]
-        }
-        print(dict)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
     }
-    //3.遍历
-    func demo2() -> () {
-        let dict = ["name": "大西瓜", "age": "12", "title": "大哥"]
-        //元组（key:String,value:NSObject）
-        for e in dict {
-            print(e)
-            print("\(e.key)  \(e.value)")
-        }
-        for (key,valu) in dict {
-            print("\(key)   \(valu)")
-        }
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        //提示：textLabel是可选的
+        //代码中textLabel?是自带的，如果有，就直接使用，如果没有，就什么也不做
+        cell.textLabel?.text = "hello~~~~~ \(indexPath.row)"
+        return cell
     }
-    //2.增，删，改
-    func demo1() -> () {
-        //可变（var）/不可变（let）
-        var dict = ["name":"张","age":"12"]
-        //新增----如果KEY不存在，就是新增
-        dict["title"] = "大哥"
-        print(dict)
-        //修改----如果KEY存在，就是修改
-        dict["name"] = "大西瓜"
-        print(dict)
-        //删除----直接给丁KEY
-        //科普：字典就是通过KEY来定位值 的，KEY必须是可以‘hash哈希’，MD5是哈希的一种
-        //‘哈希’就是将字符串变成唯一的整数，便于查找，提高字典的遍历速度
-        dict.removeValue(forKey: "age")
-        print(dict)
-    }
-    //1.定义
-    func demo() -> () {
-        //OC中定义字典用{}
-        //Swift中定义字典用[]
-         let dict = ["name":"张","age":"12"]
-        let dict1 = ["name":"陆离","age":18] as [String : Any]
-        print(dict)
-        print(dict1)
-        //定义字典数组
-        let arr = [["name":"爱国","age":20],["name":"怪我","age":40],["name":"个哦去","age":1]]
-        print(arr)
-        
+    func setUpUI() {
+        //创建表视图
+        let tv = UITableView(frame: view.bounds, style: .plain)
+        //添加到视图
+        view.addSubview(tv)
+        //注册可重用cell OC[UITableViewCell class]
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        //设置数据源
+        //Swift中没有实现协议是一个错误
+        tv.dataSource = self
     }
 }
 
