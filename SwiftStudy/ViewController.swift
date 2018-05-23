@@ -22,73 +22,50 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //Swift1.0调用方式sum（10，50）所有的形参都会省略
-        //Swift2.0调用方式sum（10，y: 50）第一个形参的名称省略
-        //Swift3.0调用方式sum(x: 10, y: 50)
-//        print(sum(x: 10, y: 50))
-        //外部参数测试
-//        print(sum1(num1: 40, num2: 60))
-//        print(sum2(20, 5))
-        //默认值测试
-        print(sum3())
-        print(sum3(x: 10, y: 20))
-        print(sum3(x: 10))
-        print(sum3(y: 80))
-        //无返回值测试
-        demo1()
-        demo2()
-        demo3()
-    }
-    
-    //MARK:无返回值
-    /**
-        主要用在闭包
-        - 直接省略
-        - ()
-        - Void
-     */
-    func demo1() {
-        print("哈哈")
-    }
-    func demo2() -> () {
-        print("呵呵")
-    }
-    func demo3() -> Void {
-        print("嘻嘻")
-    }
-    //MARK:默认值
-    //通过给参数设置默认值，在调用的时候，可以任意组合参数，如果不指定的，就用默认值
-    //****OC中需要调用很多方法，以及方法实现，最终调用包含所有参数的那个函数
-    func sum3(x: Int = 1, y: Int = 2) -> Int {
-        return x + y
-    }
-    //MARK:外部参数
-    //-外部参数就是在形参前加一个名字
-    //-外部参数不会影响函数内部的细节
-    //-外部参数会让外部调用看起来更加直观
-    //-外部形参如果使用‘_’，在外部调用函数的时候，会忽略形参的名字
-    func sum2(_ x: Int, _ y: Int) -> Int {
-        
-        //在Swift中，‘_’就是可以忽略任何不感兴趣的内容
-        ///Immutable value 'i' was never used; consider replacing with '_' or removing it
-        ///i从来没有被使用，使用‘_’来替换或移除它
-        //for i in 0..<5
-        for _ in 0..<5 {
-            print("hello")
+
+        /**
+            闭包
+            1.提前准备好代码
+            2.在需要的时候执行
+            3.可以当作参数传递
+         */
+        //1.最简单的闭包
+        //() -> ()没有参数没有返回值的函数
+        //如果没有参数，咩有返回值，连in可以一起省略
+        let b1 = {
+            print("HELLO")
         }
+        //执行闭包
+        b1()
         
-        return x + y
+        //2.带参数的闭包
+        //闭包中，参数，返回值，都写在{}中
+        //需要使用关键字‘in’分隔定义和实现
+        //{形参列表->返回值类型 in // 实现代码}
+        let b2 = { (x: Int) -> () in
+            print(x)
+        }
+        b2(3)
+        
+        //3.带参数/返回值的闭包
+        let b3 = { (x: Int) -> Int in
+            return x + 111
+        }
+        print(b3(250))
+    }
+    //使用常量记录函数的演练
+    func demo() {
+        print(sum(x: 10, y: 20))
+        
+        //定义一个常量记录函数
+        //1.(Int, Int) -> Int
+        let f = sum
+        //2.在需要的时候执行
+        print(f(20, 5))
     }
     
-    func sum1(num1 x: Int, num2 y: Int) -> Int {
-        return x + y
-    }
-    
-    //MARK:函数定义
-    //函数的定义，格式： 函数名（形参列表）->返回值类型
     func sum(x: Int, y: Int) -> Int {
         return x + y
     }
-    
 }
 
