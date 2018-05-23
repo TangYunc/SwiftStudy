@@ -23,49 +23,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        /**
-            闭包
-            1.提前准备好代码
-            2.在需要的时候执行
-            3.可以当作参数传递
-         */
-        //1.最简单的闭包
-        //() -> ()没有参数没有返回值的函数
-        //如果没有参数，咩有返回值，连in可以一起省略
-        let b1 = {
-            print("HELLO")
-        }
-        //执行闭包
-        b1()
-        
-        //2.带参数的闭包
-        //闭包中，参数，返回值，都写在{}中
-        //需要使用关键字‘in’分隔定义和实现
-        //{形参列表->返回值类型 in // 实现代码}
-        let b2 = { (x: Int) -> () in
-            print(x)
-        }
-        b2(3)
-        
-        //3.带参数/返回值的闭包
-        let b3 = { (x: Int) -> Int in
-            return x + 111
-        }
-        print(b3(250))
+        loadData()
     }
-    //使用常量记录函数的演练
-    func demo() {
-        print(sum(x: 10, y: 20))
-        
-        //定义一个常量记录函数
-        //1.(Int, Int) -> Int
-        let f = sum
-        //2.在需要的时候执行
-        print(f(20, 5))
-    }
-    
-    func sum(x: Int, y: Int) -> Int {
-        return x + y
+    //将任务添加到队列，指定任务执行的函数
+    //翻译：队列调度任务（闭包/block），以（同步/异步）的方式执行
+    func loadData() -> () {
+        DispatchQueue.global().async {
+            print("耗时操作 \(Thread.current)")
+            //主队列回调
+            DispatchQueue.main.async(execute: {
+                print("主线程更新\(Thread.current)")
+            })
+        }
     }
 }
 
