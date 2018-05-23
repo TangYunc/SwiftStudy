@@ -28,9 +28,27 @@ class ViewController: UIViewController {
         //block 中如果出现self. 要特别小心
         //只是闭包对self进行了copy，闭包执行完成后，会自动销毁，同时释放对self的引用
         //要发生循环引用，同时需要self对闭包进行引用
+        
+        //解除循环引用，需要打断链条
+        //方法1：OC的方式
+        
+        //细节1:var。     weak只能修饰var，不能修饰let
+        //'weak' must be a mutable variable, because it may change at runtime
+        //weak 对象可能在运行时被修改 ，->指向的对象一旦被释放，会被自动置为nil
+        //ViewController?
+//        weak let weakSelf = self
+        weak var weakSelf = self
         loadData {
-            
-            print(self.view)
+            //细节2
+            //解包有两种方式的解包
+            //? 可选解包 - 如果self已经被释放了，不会向对象发出getter消息，更加安全
+            //! 强行解包 - 如果self已经被释放了，强行解包会导致崩溃
+        /**
+             weakSelf?.view 只是单纯的发消息，没有参与运算
+            强行解包，因为需要计算，可选项不能直接参与到计算
+        */
+            //            print(weakSelf!.view)
+            print(weakSelf?.view)
         }
     }
     func loadData(completion: @escaping () -> ()) -> () {
@@ -39,6 +57,7 @@ class ViewController: UIViewController {
         //异步
         DispatchQueue.global().async {
             print("耗时操作")
+            Thread.sleep(forTimeInterval: 2)
             DispatchQueue.main.async(execute: {
                 //回调，执行闭包
                 completion()
