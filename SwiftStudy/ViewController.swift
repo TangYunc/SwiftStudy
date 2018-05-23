@@ -23,16 +23,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        loadData()
+        loadData { (result) in
+            print("获取的新闻数据\(result)")
+        }
     }
+    /**
+     异步执行任务，获取结果，通过block/闭包回调
+     *在Swift中，闭包的应用场景与block一致
+     */
     //将任务添加到队列，指定任务执行的函数
     //翻译：队列调度任务（闭包/block），以（同步/异步）的方式执行
-    func loadData() -> () {
+    func loadData(completion: @escaping (_ result: [String]) -> ()) -> () {
         DispatchQueue.global().async {
             print("耗时操作 \(Thread.current)")
+            //休眠
+            Thread.sleep(forTimeInterval: 3)
+            //获得结果
+            let json = ["八卦","新闻","大事件"]
+            
             //主队列回调
             DispatchQueue.main.async(execute: {
                 print("主线程更新\(Thread.current)")
+                
+                //回调执行闭包，通过参数传递
+                //传递异步获取的结果
+            completion(json)
             })
         }
     }
