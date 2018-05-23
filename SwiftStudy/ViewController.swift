@@ -17,33 +17,27 @@ import UIKit
  100个swift学习tip，作者王巍，http://onecat.com
  */
 
-class ViewController: UIViewController,UITableViewDataSource {
+class ViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-     setUpUI()
+     
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    //数据源方法
+    //如果使用CollectionViewController的数据源方法都有 ‘override’
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 50
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        //提示：textLabel是可选的
-        //代码中textLabel?是自带的，如果有，就直接使用，如果没有，就什么也不做
-        cell.textLabel?.text = "hello~~~~~ \(indexPath.row)"
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+        cell.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         return cell
     }
-    func setUpUI() {
-        //创建表视图
-        let tv = UITableView(frame: view.bounds, style: .plain)
-        //添加到视图
-        view.addSubview(tv)
-        //注册可重用cell OC[UITableViewCell class]
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
-        //设置数据源
-        //Swift中没有实现协议是一个错误
-        tv.dataSource = self
+    //移动cell
+    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
     }
+    
 }
 
