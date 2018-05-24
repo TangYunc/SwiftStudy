@@ -19,79 +19,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var numTF1: UITextField?
-    var numTF2: UITextField?
-    var resultLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       setUpUI()
-    }
-    //MARK:计算结果
-    @objc func cacl() -> () {
-        print(#function)
-        //将文本框内容转换为数字
-        //Int? 如果文本框内容不是数字之后为nil
-        //先测试let num1 = Int(numTF1?.text ?? "")
-        let num1 = Int(numTF1?.text ?? "")
-        let num2 = Int(numTF2?.text ?? "")
-        
-        print("\(num1)-----\(num2)")
-        guard let num11 = num1, let num22 = num2 else {
-            print("计算值必须为数字")
-            return
-        }
-         resultLabel?.text = "\(num11 + num22)"
+        //实例化Person
+        //()----->OC 的alloc/init
+        //Swift中对应一个函数init()构造函数
+        //作用：分配空间，初始化成员变量
+        let p = Person()
+        print(p.name)
     }
     
-    
-    func setUpUI() -> () {
-        
-        //创建两个TextField
-        let tf1 = UITextField(frame: CGRect(x: 20, y: 100, width: 100, height: 30))
-        tf1.borderStyle = .roundedRect
-        tf1.text = "0"
-        view.addSubview(tf1)
-        
-        let tf2 = UITextField(frame: CGRect(x: 140, y: 100, width: 100, height: 30))
-        tf2.borderStyle = .roundedRect
-        tf2.text = "0"
-        view.addSubview(tf2)
-        //创建三个Label
-        let l1 = UILabel(frame: CGRect(x: 120, y: 100, width: 20, height: 30))
-        l1.textAlignment = .center
-        l1.text = "+"
-
-        view.addSubview(l1)
-        
-        //记录属性
-        numTF1 = tf1
-        numTF2 = tf2
-        
-        let l2 = UILabel(frame: CGRect(x: 240, y: 100, width: 20, height: 30))
-        l2.textAlignment = .center
-        l2.text = "="
-
-        view.addSubview(l2)
-        
-        let l3 = UILabel(frame: CGRect(x: 260, y: 100, width: 100, height: 30))
-        l3.textAlignment = .center
-        l3.text = "0"
-        
-        view.addSubview(l3)
-        
-        resultLabel = l3
-        //创建一个按钮
-        let btn = UIButton(type: .custom)
-        btn.setTitle("计算结果", for: .normal)
-        btn.setTitleColor(#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), for: .normal)
-        btn.sizeToFit()
-        btn.center = view.center
-        
-        view.addSubview(btn)
-        btn.addTarget(self, action: #selector(cacl), for: .touchUpInside)
-    }
 
 }
 
