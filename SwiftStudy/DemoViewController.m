@@ -10,6 +10,7 @@
 
 @interface DemoViewController ()
 
+@property (nonatomic, copy) void (^completionCallBack) (void);
 @end
 
 @implementation DemoViewController
@@ -17,8 +18,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self loadData:^{
+        NSLog(@"%@", self.view);
+    }];
 }
 
+- (void)loadData:(void (^)(void))completion{
+    
+    //记录属性 block
+    self.completionCallBack = completion;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"耗时操作 %@",[NSThread currentThread]);
+        [NSThread sleepForTimeInterval:2];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //执行block
+            completion();
+        });
+    });
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
