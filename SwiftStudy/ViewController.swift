@@ -27,11 +27,8 @@ class ViewController: UIViewController {
         //()----->OC 的alloc/init
         //Swift中对应一个函数init()构造函数
         //作用：分配空间，初始化成员变量
-        let p = Person()
+        let p = Person(name: "老王")
         print(p.name)
-        
-        let s = Student()
-        print(s.name + "----" + s.no)
         
     }
     
