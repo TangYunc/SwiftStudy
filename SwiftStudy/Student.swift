@@ -10,6 +10,7 @@ import UIKit
 
 class Student: Person {
 
+    //override重写
     var no: String
     override init() {
         print("Student init")
