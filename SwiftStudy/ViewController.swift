@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         let p = Person(name: "老王")
         print(p.name)
         
+        let s = Student(name: "老李", no: "010")
+        print(s.name + "---" + s.no)
     }
     
 
