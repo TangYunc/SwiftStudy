@@ -19,70 +19,79 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    //属性就是一个var
-    var completionCallBack: (() -> ())?
+    var numTF1: UITextField?
+    var numTF2: UITextField?
+    var resultLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //block 中如果出现self. 要特别小心
-        //只是闭包对self进行了copy，闭包执行完成后，会自动销毁，同时释放对self的引用
-        //要发生循环引用，同时需要self对闭包进行引用
+
+       setUpUI()
+    }
+    //MARK:计算结果
+    @objc func cacl() -> () {
+        print(#function)
+        //将文本框内容转换为数字
+        //Int? 如果文本框内容不是数字之后为nil
+        //先测试let num1 = Int(numTF1?.text ?? "")
+        let num1 = Int(numTF1?.text ?? "")
+        let num2 = Int(numTF2?.text ?? "")
         
-        //解除循环引用，需要打断链条
-        //方法1：OC的方式
-        
-        //细节1:var。     weak只能修饰var，不能修饰let
-        //'weak' must be a mutable variable, because it may change at runtime
-        //weak 对象可能在运行时被修改 ，->指向的对象一旦被释放，会被自动置为nil
-        //ViewController?
-//        weak let weakSelf = self
-//        weak var weakSelf = self
-//        loadData {
-            //细节2
-            //解包有两种方式的解包
-            //? 可选解包 - 如果self已经被释放了，不会向对象发出getter消息，更加安全
-            //! 强行解包 - 如果self已经被释放了，强行解包会导致崩溃
-        /**
-             weakSelf?.view 只是单纯的发消息，没有参与运算
-            强行解包，因为需要计算，可选项不能直接参与到计算
-        */
-            //            print(weakSelf!.view)
-//            print(weakSelf?.view)
-//
-//        }
-        
-        //方法二Swift推荐的方法
-        //OC中的 __weak方式
-        //[weak self]表示{}中所有self都是弱引用，注意解包
-        loadData { [weak self] in
-            print(self?.view)
+        print("\(num1)-----\(num2)")
+        guard let num11 = num1, let num22 = num2 else {
+            print("计算值必须为数字")
+            return
         }
-        //方法三--Swift的另外一种用法，知道就好
-        //OC中的 __unsafe_unretained方式
-        //[unowned self]表示{}中所有self都是assign修饰的，不会强引用，但是当对象被释放的时候，指针地址不会变化
-        //如果对象被释放，继续调用，会出现野指针问题
-//        loadData { [unowned self] in
-//            print(self.view)
-//        }
+         resultLabel?.text = "\(num11 + num22)"
+    }
+    
+    
+    func setUpUI() -> () {
         
+        //创建两个TextField
+        let tf1 = UITextField(frame: CGRect(x: 20, y: 100, width: 100, height: 30))
+        tf1.borderStyle = .roundedRect
+        tf1.text = "0"
+        view.addSubview(tf1)
+        
+        let tf2 = UITextField(frame: CGRect(x: 140, y: 100, width: 100, height: 30))
+        tf2.borderStyle = .roundedRect
+        tf2.text = "0"
+        view.addSubview(tf2)
+        //创建三个Label
+        let l1 = UILabel(frame: CGRect(x: 120, y: 100, width: 20, height: 30))
+        l1.textAlignment = .center
+        l1.text = "+"
+
+        view.addSubview(l1)
+        
+        //记录属性
+        numTF1 = tf1
+        numTF2 = tf2
+        
+        let l2 = UILabel(frame: CGRect(x: 240, y: 100, width: 20, height: 30))
+        l2.textAlignment = .center
+        l2.text = "="
+
+        view.addSubview(l2)
+        
+        let l3 = UILabel(frame: CGRect(x: 260, y: 100, width: 100, height: 30))
+        l3.textAlignment = .center
+        l3.text = "0"
+        
+        view.addSubview(l3)
+        
+        resultLabel = l3
+        //创建一个按钮
+        let btn = UIButton(type: .custom)
+        btn.setTitle("计算结果", for: .normal)
+        btn.setTitleColor(#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), for: .normal)
+        btn.sizeToFit()
+        btn.center = view.center
+        
+        view.addSubview(btn)
+        btn.addTarget(self, action: #selector(cacl), for: .touchUpInside)
     }
-    func loadData(completion: @escaping () -> ()) -> () {
-        //使用属性记录闭包    ->self对闭包引用了
-        completionCallBack = completion
-        //异步
-        DispatchQueue.global().async {
-            print("耗时操作")
-            Thread.sleep(forTimeInterval: 2)
-            DispatchQueue.main.async(execute: {
-                //回调，执行闭包
-                completion()
-            })
-        }
-    }
-    //类似于OC中的dealloc
-    deinit {
-        print("释放了")
-    }
+
 }
 
