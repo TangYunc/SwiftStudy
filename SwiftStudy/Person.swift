@@ -27,14 +27,20 @@ class Person: NSObject {
     //var age: Int？
     var age: Int = 0
     //如果是private属性。使用KVC设置值的时候，这样无法设置
-    private var title: String?
+    //如果设置成private属性/方法，禁止外部访问的
+//    private var title: String?
+    var title: String?
     //重置构造函数，使字典为本类设置初始值
-    init(dict: [String: AnyObject]) {
+    init(dict: [String: Any]) {
         //'self' used before super.init call
         //使用‘self’之前要调用父类初始化方法
         super.init()
         //KVC 的方法是OC的方法，**在运行时给对象发送消息**
         //要求对象已经实例化完成
         setValuesForKeys(dict)
+    }
+    //重写父类方法
+    override func setValue(_ value: Any?, forKey key: String) {
+        //没有调用super，将父类代码实现完全覆盖，不会崩溃
     }
 }

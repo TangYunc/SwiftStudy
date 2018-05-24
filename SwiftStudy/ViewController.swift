@@ -28,8 +28,8 @@ class ViewController: UIViewController {
         //Swift中对应一个函数init()构造函数
         //作用：分配空间，初始化成员变量
         
-        let p = Person(dict: ["name":"老铁"])
-        print(p.name)
+        let p = Person(dict: ["name":"老铁","age":18,"title":"iphone"])
+        print(p.name,p.age,p.title)
         
     }
     
