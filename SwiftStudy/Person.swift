@@ -8,35 +8,24 @@
 
 import UIKit
 /**
- 构造函数的目的：给自己的 属性分配空间并且设置初始值
- 调用父类的‘构造函数’之前，首先要给本类的属性设置初始值
- 调用父类的‘构造函数’，给父类的属性分配空间设置初始值
- NSObject没有属性，只有一个成员变量‘isa‘
- 如果重载了构造函数，并且没有实现父类的init方法，系统不再提供init()构造函数（默认是会有的！）
- ---因为默认的构造函数，不能给本类的属性分配空间
+ 1.定义属性的时候，如果是对象，通常都是可选的
+ --在需要的时候创建
+ --避免写构造函数，可以简化代码
+ 2.使用KVC方法之前，应该调用super.init保证对象实例化完成
  */
-
-//Class 'Person' has no initializers
-//'Person'类没有‘初始化器’s，构造函数，可以有多个，默认的是init()
 class Person: NSObject {
-
-    var name: String
-    //重写，父类有这个方法
-//    override init() {
-//        print("Person init")
-//        //这里初始化值会产生一个问题，name的确有初始化值，但是但是所有的初始化值都为TYC
-//        name = "TYC"
-//        //Property 'self.name' not initialized at super.init call
-//        //提示给'self.name'初始化，分配空间，设置初始值！
-//        super.init()
-//    }
-    //重载，函数名相同，但是参数和个数不同
-    //-重载可以给自己的属性从外面设置初始值
-    //OC没有重载
-    init(name: String) {
-        //使用参数的name设置给属性
-        self.name = name
-        //调用父类的构造函数
+    //name属性是可选的，在OC中很多的属性都是在需要的时候创建的
+    //例如，vc.view/tableViewcell.textLabel/detailLabel/imageView
+    //因为是在手机开发，内存很宝贵，有的属性是并不是一定要分配空间的
+    //延迟加载，需要的时候再创建
+    var name: String?
+    //重置构造函数，使字典为本类设置初始值
+    init(dict: [String: Any]) {
+        //'self' used before super.init call
+        //使用‘self’之前要调用父类初始化方法
         super.init()
+        //KVC 的方法是OC的方法，**在运行时给对象发送消息**
+        //要求对象已经实例化完成
+        setValuesForKeys(dict)
     }
 }
