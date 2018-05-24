@@ -18,8 +18,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //解除引用1:__weak
+//    __weak typeof(self)weakSelf = self;
+//    [self loadData:^{
+//        NSLog(@"%@", weakSelf.view);
+//    }];
+    //解除引用2:__unsafe_unretained
+    //iOS高级程序员要自行管理内存的时候，可以考虑，但是不建议使用
+    //EXC_BAD_ACCESS。怀内存访问，野指针访问
+    //__unsafe_unretained同样是assigne的引用（MRC中没有weak）
+    //在MRC中的弱引用都是assign，不会增加引用计数，但是对象一旦被释放，指针地址不会改变，继续调用，就会出现野指针
+    //在ARC weak，本质上是一个观察者模式，一旦发现对象被释放，会自动将地址置为nil，更安全
+    //效率方面__weak会更低一些
+    __unsafe_unretained typeof(self)weakSelf = self;
     [self loadData:^{
-        NSLog(@"%@", self.view);
+        NSLog(@"%@", weakSelf.view);
     }];
 }
 

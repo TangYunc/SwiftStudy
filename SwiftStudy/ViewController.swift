@@ -53,11 +53,13 @@ class ViewController: UIViewController {
 //        }
         
         //方法二Swift推荐的方法
+        //OC中的 __weak方式
         //[weak self]表示{}中所有self都是弱引用，注意解包
         loadData { [weak self] in
             print(self?.view)
         }
         //方法三--Swift的另外一种用法，知道就好
+        //OC中的 __unsafe_unretained方式
         //[unowned self]表示{}中所有self都是assign修饰的，不会强引用，但是当对象被释放的时候，指针地址不会变化
         //如果对象被释放，继续调用，会出现野指针问题
 //        loadData { [unowned self] in
