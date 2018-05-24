@@ -23,6 +23,7 @@ class Person: NSObject {
     //Property 'self.name' not initialized at implicit
     //implicit(隐式生成的super.init)调用父类的构造函数之前，属性'self.name'没有初始化
     override init() {
+        print("Person init")
         name = "TYC"
         //Property 'self.name' not initialized at super.init call
         //提示给'self.name'初始化，分配空间，设置初始值！

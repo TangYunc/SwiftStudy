@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D96822620B686EB00852773 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D96822520B686EB00852773 /* Person.swift */; };
 		2D96822920B68A6200852773 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D96822820B68A6200852773 /* Book.m */; };
+		2D96822B20B68C9500852773 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D96822A20B68C9500852773 /* Student.swift */; };
 		2DF6410E20B28DB100D69794 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF6410D20B28DB100D69794 /* AppDelegate.swift */; };
 		2DF6411020B28DB100D69794 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF6410F20B28DB100D69794 /* ViewController.swift */; };
 		2DF6411320B28DB100D69794 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DF6411120B28DB100D69794 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		2D96822520B686EB00852773 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		2D96822720B68A6200852773 /* Book.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		2D96822820B68A6200852773 /* Book.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		2D96822A20B68C9500852773 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		2DF6410A20B28DB100D69794 /* SwiftStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DF6410D20B28DB100D69794 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DF6410F20B28DB100D69794 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				2DF6410D20B28DB100D69794 /* AppDelegate.swift */,
 				2DF6410F20B28DB100D69794 /* ViewController.swift */,
 				2D96822520B686EB00852773 /* Person.swift */,
+				2D96822A20B68C9500852773 /* Student.swift */,
 				2D96822720B68A6200852773 /* Book.h */,
 				2D96822820B68A6200852773 /* Book.m */,
 				2DF6411120B28DB100D69794 /* Main.storyboard */,
@@ -150,6 +153,7 @@
 				2D96822920B68A6200852773 /* Book.m in Sources */,
 				2D96822620B686EB00852773 /* Person.swift in Sources */,
 				2DF6411020B28DB100D69794 /* ViewController.swift in Sources */,
+				2D96822B20B68C9500852773 /* Student.swift in Sources */,
 				2DF6410E20B28DB100D69794 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

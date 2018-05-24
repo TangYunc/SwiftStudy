@@ -29,6 +29,10 @@ class ViewController: UIViewController {
         //作用：分配空间，初始化成员变量
         let p = Person()
         print(p.name)
+        
+        let s = Student()
+        print(s.name + "----" + s.no)
+        
     }
     
 
