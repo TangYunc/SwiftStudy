@@ -44,6 +44,29 @@ class ListTableViewController: UITableViewController {
             
         }
     }
+    //MARK:控制器跳转方法
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //类型转换as
+        //Swift中除了String外，绝大多数使用as需要‘?/!’
+        //as? / as! 直接根据前面的值来决定
+        //注意：if let / guard let 判空语句，一律使用 as?
+        let vc = segue.destination as! DetailViewController
+        
+        //设置选中的person。indextPath
+        if let indextPath = sender as? IndexPath {
+            //indextPath一定有值
+            vc.person = personList[indextPath.row]
+        }
+        
+    }
+    
+    //MARK:代理方法
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        //执行Segue
+        performSegue(withIdentifier: "list2Detial", sender: indexPath)
+    }
+    
     //MARK:数据源方法
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return personList.count
