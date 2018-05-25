@@ -22,6 +22,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let p = Person(name: "老王", age: 10)
+        print(p?.name)
+        
         //URL的构造函数可以返回nil
         //构造函数就是实例化对象的
         let url = URL(string: "http:www.baidu.com")
