@@ -56,8 +56,12 @@ class ListTableViewController: UITableViewController {
         if let indextPath = sender as? IndexPath {
             //indextPath一定有值
             vc.person = personList[indextPath.row]
+            //设置编辑完成的闭包
+            vc.completionCallBack = {
+                //刷新制定行
+                self.tableView.reloadRows(at: [indextPath], with: .automatic)
+            }
         }
-        
     }
     
     //MARK:代理方法
