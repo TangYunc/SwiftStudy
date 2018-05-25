@@ -142,8 +142,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="明细" id="hfV-R3-N1s">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="Q5I-Sh-TbV"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="Q5I-Sh-TbV">
+                            <connections>
+                                <action selector="saveAction:" destination="hni-ss-uFC" id="Ts4-fx-zi1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTF" destination="dJX-M0-FpR" id="fl8-nX-TBY"/>
+                        <outlet property="phoneTF" destination="V15-co-4Fw" id="t1Q-d3-ozy"/>
+                        <outlet property="titleTF" destination="64d-NL-Mau" id="cK7-Fl-R2I"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lca-p5-4kN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
