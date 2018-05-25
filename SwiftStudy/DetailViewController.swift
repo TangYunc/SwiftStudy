@@ -39,6 +39,11 @@ class DetailViewController: UITableViewController {
 
     
     @IBAction func saveAction(_ sender: Any) {
+        
+        //1.判断person是否为nil，如果为nil，则新建person
+        if person == nil {
+            person = Person()
+        }
         //2.用UI更新person的内容
         person?.name = nameTF.text
         person?.phone = phoneTF.text

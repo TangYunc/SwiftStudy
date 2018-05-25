@@ -44,6 +44,11 @@ class ListTableViewController: UITableViewController {
             
         }
     }
+    @IBAction func newPersonAction(_ sender: Any) {
+        //执行segue跳转界面
+        performSegue(withIdentifier: "list2Detial", sender: nil)
+    }
+    
     //MARK:控制器跳转方法
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //类型转换as
@@ -54,12 +59,34 @@ class ListTableViewController: UITableViewController {
         
         //设置选中的person。indextPath
         if let indextPath = sender as? IndexPath {
+            
             //indextPath一定有值
             vc.person = personList[indextPath.row]
             //设置编辑完成的闭包
+            /**
+             编辑个人的闭包
+             */
             vc.completionCallBack = {
                 //刷新制定行
                 self.tableView.reloadRows(at: [indextPath], with: .automatic)
+            }
+        }else {
+            //新建个人记录
+            /**
+             新建个人的闭包
+             block的特点，：1.定义block可以和当前上下文在一起
+                          2.便于阅读和维护
+                          3.可以根据不同的需求传递不同的代码
+             */
+            vc.completionCallBack = {
+                //1.获取明细控制器的person
+                guard let p = vc.person else {
+                    return
+                }
+                //2.插入到数组顶部
+                self.personList.insert(p, at: 0)
+                //3.刷新表格
+                self.tableView.reloadData()
             }
         }
     }
