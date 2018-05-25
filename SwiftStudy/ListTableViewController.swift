@@ -24,7 +24,7 @@ class ListTableViewController: UITableViewController {
         }
     }
     //模拟异步，利用闭包回调
-    func loadData(completion: @escaping (_ list: [Person]) -> ()) -> () {
+    private func loadData(completion: @escaping (_ list: [Person]) -> ()) -> () {
         DispatchQueue.global().async {
             
             Thread.sleep(forTimeInterval: 1)
@@ -43,6 +43,17 @@ class ListTableViewController: UITableViewController {
             })
             
         }
+    }
+    //MARK:数据源方法
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return personList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        cell.textLabel?.text = personList[indexPath.row].name
+        cell.detailTextLabel?.text = personList[indexPath.row].phone
+        return cell
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
