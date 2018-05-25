@@ -32,6 +32,13 @@ class DetailViewController: UITableViewController {
 
     
     @IBAction func saveAction(_ sender: Any) {
+        //用UI更新person的内容
+        person?.name = nameTF.text
+        person?.phone = phoneTF.text
+        person?.title = titleTF.text
+        //返回上一级界面
+        //在Swift3.0上，navigationController?.popViewController(animated: true)有一个返回值，会有一个警告提示方法的返回值没有使用。此时用‘_’忽略一切不关心的内容
+        navigationController?.popViewController(animated: true)
     }
     
 }
