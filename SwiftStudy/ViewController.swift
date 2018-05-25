@@ -22,8 +22,26 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(Person.propertyList())
+        //URL的构造函数可以返回nil
+        //构造函数就是实例化对象的
+        let url = URL(string: "http:www.baidu.com")
+        //发起网络请求
+        //和OC的区别，闭包的所有参数，都要自己写，而OC是直接带入
+        //如果不关心的值可以直接忽略
+        URLSession.shared.dataTask(with: url!) { (data, _, error) in
+//            if (error != nil){
+//                print("网络请求失败！")
+//                return
+//            }
+            guard let data = data else{
+                print("网络请求失败:\(error)")
+                return
+            }
+            //将data转换为String
+            let html = String(data:data, encoding:.utf8)
+            print(html)
+            
+        }.resume()
         
     }
     
