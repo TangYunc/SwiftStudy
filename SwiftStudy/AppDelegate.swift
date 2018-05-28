@@ -39,19 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         
-        //输出Bundle info.plist的内容
-        //ProductName / 版本是记录在info.plist中
-        // [String : Any]?
-        print(Bundle.main.infoDictionary)
-        //*****解包*******
-        //因为字典是可选的，因此需要先解包再取值，如果字典为nil就不取值
-        //通过key从字典取值，如果key错了，就不再有值了
-        // Any？表示不一定能够取到值
-        let ns = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
-        
-        
+
         //2.设置根视图，设置根控制器，需要添加命名空间，->默认就是项目名称
-        let clsname = ns + "." + "ViewController"
+        let clsname = Bundle.main.nameSpace() + "." + "ViewController"
 //        let clsname = "SwiftStudy.ViewController"
         //控制器的类型
         let cls = NSClassFromString(clsname) as? UIViewController.Type
