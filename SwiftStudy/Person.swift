@@ -25,4 +25,16 @@ class Person: NSObject {
         }
     }
     
+    //只读属性
+    var title: String{
+        //只重写了getter方法，没有重写setter放法
+        get {
+            return "Mr." + (name ?? "")
+        }
+    }
+    //只读属性的简写,直接写return
+    var title2: String {
+            return "Mr.XXX" + (name ?? "")
+    }
+    
 }

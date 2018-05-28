@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         let p = Person()
         p.name = "老人"
         print(p.name)
+//        p.title = "afsa"
+        print(p.title2)
     }
 
 
