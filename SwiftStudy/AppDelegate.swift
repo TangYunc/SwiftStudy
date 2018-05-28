@@ -22,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //注意：window是可选的
     var window: UIWindow?
 
+    /**
+     1.知道Swift中的命名空间
+     --在同一个命名空间下，全局共享
+     --第三方使用Swift如果直接拖拽到项目中，从属于同一个命名空间，很有可能会崩溃
+     2.要知道Swift中NSClassFromString()反射机制的写法
+     --反射机制最主要的目的就是为了解藕
+     */
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -31,9 +38,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //1.实例化window
         window = UIWindow()
         window?.backgroundColor = UIColor.white
-        //2.设置根视图
-        let v = ViewController()
-        window?.rootViewController = v
+        //2.设置根视图，设置根控制器，需要添加命名空间，->默认就是项目名称
+        let clsname = "SwiftStudy.ViewController"
+        //控制器的类型
+        let cls = NSClassFromString(clsname) as? UIViewController.Type
+        
+        //使用类型创建视图控制器
+        let vc = cls?.init()
+        
+        
+//        let v = ViewController()
+        window?.rootViewController = vc
         
         //3.设置window可见
         window?.makeKeyAndVisible()
