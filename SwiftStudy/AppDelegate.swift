@@ -41,7 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         //2.设置根视图，设置根控制器，需要添加命名空间，->默认就是项目名称
-        let clsname = Bundle.main.nameSpace() + "." + "ViewController"
+//        let clsname = Bundle.main.nameSpace() + "." + "ViewController"
+        //利用计算属性，从阅读上，更加直观
+        let clsname = Bundle.main.nameSpace + "." + "ViewController"
 //        let clsname = "SwiftStudy.ViewController"
         //控制器的类型
         let cls = NSClassFromString(clsname) as? UIViewController.Type
