@@ -16,15 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
-        let p = Person()
-        p.name = "小虎"
-        
-        let label = DemoLabel(frame: CGRect(x: 10, y: 50, width: 100, height: 40))
-        view.addSubview(label)
-        //将模型设置给label
-        label.p = p
-        
+        view.backgroundColor = UIColor.red
     }
 
 

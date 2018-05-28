@@ -19,11 +19,26 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    //注意：window是可选的
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //****代码中的'?'都是可选解包，发送消息，不参与计算
+        //所有的'?'都是Xcode自动添加的
+        
+        //1.实例化window
+        window = UIWindow()
+        window?.backgroundColor = UIColor.white
+        //2.设置根视图
+        let v = ViewController()
+        window?.rootViewController = v
+        
+        //3.设置window可见
+        window?.makeKeyAndVisible()
+        
+        
         return true
     }
 
