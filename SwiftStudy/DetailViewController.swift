@@ -34,7 +34,6 @@ class DetailViewController: UITableViewController {
             phoneTF.text = person?.phone
             titleTF.text = person?.title
         }
-        
     }
 
     

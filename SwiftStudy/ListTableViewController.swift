@@ -78,9 +78,9 @@ class ListTableViewController: UITableViewController {
                           2.便于阅读和维护
                           3.可以根据不同的需求传递不同的代码
              */
-            vc.completionCallBack = {
+            vc.completionCallBack = { [weak vc] in
                 //1.获取明细控制器的person
-                guard let p = vc.person else {
+                guard let p = vc?.person else {
                     return
                 }
                 //2.插入到数组顶部
