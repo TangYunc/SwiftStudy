@@ -10,29 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
-     private lazy var p = Person()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        p.title3 = nil
+
+        let p = Person()
+        p.name = "小虎"
         
-        //只要调用一次，懒加载后面的闭包就再也不会执行了
-//        let p = Person()
-        p.name = "老人"
-        print(p.name)
-//        p.title = "afsa"
-        print(p.title2)
-        
-        print(p.title3)
-        
+        let label = DemoLabel(frame: CGRect(x: 10, y: 50, width: 100, height: 40))
+        view.addSubview(label)
+        //将模型设置给label
+        label.p = p
         
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        p.name = "花花"
-        print(p.title2)
-        print(p.title3)
-    }
+
 }
