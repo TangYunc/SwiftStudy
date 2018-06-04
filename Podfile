@@ -3,7 +3,7 @@
 
 target 'SwiftStudy' do
 
-	pod 'AFNetworking'
+	pod 'AFNetworking', '~> 3.0.1'
 	pod 'SDWebImage'
 	pod 'YYModel'
 	pod 'SVProgressHUD'
