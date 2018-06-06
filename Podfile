@@ -8,5 +8,5 @@ target 'SwiftStudy' do
 	pod 'YYModel'
 	pod 'SVProgressHUD'
 	pod 'pop'
-    pod 'FMDB'
+  pod 'FMDB'
 end
